@@ -12,4 +12,4 @@ And then run the code with the command line :
 
 `python ContextRetrieval.py`
 
-
+It returns the evolution of the recall in terms of how many contexts we choose to consider.
