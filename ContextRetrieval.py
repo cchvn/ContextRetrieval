@@ -43,8 +43,7 @@ print('Dataframe created')
 # Preprocessing of the data
 # With this function we remove the line breaks, and all the ponctuation, moreover, we tranform all the upper case letters in lower case.
 def preprocess_text(text):
-    REPLACE_WITH_SPACE = re.compile(r"\n") 
-    text = [REPLACE_WITH_SPACE.sub(" ", line) for line in text]
+    text = [re.compile(r"\n").sub(" ", line) for line in text]
     text = [re.sub(r"([(.;:!\'ˈ~?,\"(\[\])\\\/\-–\t```<>_#$€@%*+—°′″“”×’^₤₹‘])", r'', line) for line in text]
     return text.str.lower()
 
