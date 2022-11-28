@@ -58,7 +58,7 @@ df_preprocess['answer_text'] = preprocess_text(df['answer_text'])
 print('Preprocess done')
 
 # Train/Test Split
-split_value = 0.1 #we take 10% of data as test data because the last step to compute recall is long to compute
+split_value = 0.1 #we take 10% of data as test data because the last step to compute accuracy is long to compute
 test_dim = int(len(df['title'].unique()) * split_value)
 test_titles = np.random.choice(df['title'].unique(), size=test_dim, replace=False)
 
@@ -117,8 +117,8 @@ print('----------------------------')
 for i in range(0,len(accuracy)):
     print('Recall for k = ', i, ' : ', accuracy[i], '\n')
 
-# plot and export the recall in terms of k
+# plot and export the accuracy in terms of k
 plt.plot(list(range(1, k_results+1)),accuracy,"-s");
 plt.xlabel("k");
-plt.ylabel("recall");
-plt.savefig('recall.png')
+plt.ylabel("accuracy");
+plt.savefig('accuracy.png')
