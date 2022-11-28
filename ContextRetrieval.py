@@ -95,30 +95,30 @@ print('Context retrieval done in ', execution_time, ' seconds')
 
 # Evaluate our model :
 # In this cell we evaluate how effective is tf-idf in finding the right context for a question : To do so we compute 
-# the result recall for each k between 1 and k_results: in particular, for each question we take the k most 
+# the result accuracy for each k between 1 and k_results: in particular, for each question we take the k most 
 # probable contexts and check if the right context is among them 
 
 k_results = 10  
 
 tp = 0 #number of true positives
-recall = []
+accuracy = []
 for k in range(1, k_results+1):
     for j,result in enumerate(results.T):
         result = np.argsort(result)
         if df_original_test['context'].tolist()[j] in [text for text in context_test[result[-k:].tolist()]]:
             tp+=1
-    recall.append(tp/len(df_original_test))
+    accuracy.append(tp/len(df_original_test))
     tp = 0
 
 print('----------------------------')
 print('Model evaluation :')
 print('----------------------------')
 
-for i in range(0,len(recall)):
-    print('Recall for k = ', i, ' : ', recall[i], '\n')
+for i in range(0,len(accuracy)):
+    print('Recall for k = ', i, ' : ', accuracy[i], '\n')
 
 # plot and export the recall in terms of k
-plt.plot(list(range(1, k_results+1)),recall,"-s");
+plt.plot(list(range(1, k_results+1)),accuracy,"-s");
 plt.xlabel("k");
 plt.ylabel("recall");
 plt.savefig('recall.png')
