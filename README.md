@@ -1,4 +1,4 @@
-# Context retrieval exercice for Illuin
+# Context retrieval exercice
 
 This python script evaluates an algorithm that is supposed to retrieve the context of a question.
 
